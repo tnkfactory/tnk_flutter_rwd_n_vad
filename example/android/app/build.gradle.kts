@@ -28,6 +28,11 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        //QA
+        manifestPlaceholders["adiscope_media_id"] = "000000"
+        manifestPlaceholders["adiscope_media_secret"] = "00000000000000000000000000000000"
+        manifestPlaceholders["adiscope_sub_domain"] = ""
     }
 
     buildTypes {

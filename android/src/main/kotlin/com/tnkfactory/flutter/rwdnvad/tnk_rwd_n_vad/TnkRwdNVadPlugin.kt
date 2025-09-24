@@ -1,6 +1,7 @@
 package com.tnkfactory.flutter.rwdnvad.tnk_rwd_n_vad
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -13,31 +14,22 @@ import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
-import android.webkit.WebView
 import androidx.annotation.NonNull
+import androidx.browser.customtabs.CustomTabsIntent
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
 import com.tnkfactory.ad.customtab.TnkCustomTabActivityHelper
 import com.tnkfactory.ad.customtab.TnkWebviewFallback
+import com.tnkfactory.ad.fancast.TnkEventActivity
 import com.tnkfactory.ad.rwd.Settings
 import com.tnkfactory.ad.rwd.TnkCore
-import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.text.replace
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /** TnkRwdNVadPlugin */
-class TnkRwdNVadPlugin : FlutterPlugin, MethodCallHandler {
+class TnkRwdNVadPlugin :  FlutterPlugin, MethodCallHandler, ActivityAware {
 
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
@@ -263,7 +255,7 @@ class TnkRwdNVadPlugin : FlutterPlugin, MethodCallHandler {
                         .replace("{adid}", Settings.getAdid(mActivity))
                         .replace("{md_user_nm}", Settings.getMediaUserName(mActivity) ?: "")
                     if (!TextUtils.isEmpty(depp_link) && depp_link != "0") {
-                        finalUrl += ("&" + "depp_link" + "=" + depp_link)
+                        finalUrl += ("&" + "deep_link" + "=" + depp_link)
                     }
 
                     TnkCustomTabActivityHelper.openCustomTab(
