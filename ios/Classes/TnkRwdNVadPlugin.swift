@@ -14,7 +14,7 @@ public class TnkRwdNVadPlugin: NSObject, FlutterPlugin, OfferwallEventListener
     var landingData = ""
     var eventWebVC : AdiscopeAdEventWebViewController? = nil
     
-    
+    var checkSumKey : String?
     typealias tempListener = (Bool, TnkError?) -> Void
 
 //    static let tnkCustomUI: TnkCustomUI = TnkCustomUI()
@@ -418,6 +418,7 @@ public class TnkRwdNVadPlugin: NSObject, FlutterPlugin, OfferwallEventListener
                 if let eventId = args["eventId"] as? Int,
                    let parentVC = viewController
                 {
+                    let checkParam = args["checkParam"] as? String
                     TnkSession.sharedInstance()?.getEventWebView(parentViewController: parentVC, eventId: eventId) { [weak self] result in
                         guard let self = self else { return }
                         if let vc = result
@@ -425,6 +426,17 @@ public class TnkRwdNVadPlugin: NSObject, FlutterPlugin, OfferwallEventListener
                             self.showAdisocpeVC(parent:parentVC, target: vc)
                         }
                     }
+                }
+            }
+            break
+        case "setCheckParam":
+            if let args = call.arguments as? [String: Any]
+            {
+                if let checkParam = args["checkParam"] as? String
+                {
+                    self.eventWebVC?.checkSumkey = checkParam
+                    self.checkSumKey = checkParam
+                    AdiscopeInterface.sharedInstance().setRewardedCheckParam(self.checkSumKey)
                 }
             }
             break
@@ -437,13 +449,17 @@ public class TnkRwdNVadPlugin: NSObject, FlutterPlugin, OfferwallEventListener
     
     func showAdisocpeVC(parent : UIViewController , target : AdiscopeAdEventWebViewController)
     {
+        target.checkSumkey = self.checkSumKey
+        
         self.eventWebVC = target
         AdiscopeInterface.sharedInstance().setMainDelegate(self)
         target.loadInterstitialAdHandler = { unitId in
+            AdiscopeInterface.sharedInstance().setRewardedCheckParam(self.checkSumKey)
             AdiscopeInterface.sharedInstance().load(unitId)
         }
         
         target.loadRvAdHandler = { unitId in
+            AdiscopeInterface.sharedInstance().setRewardedCheckParam(self.checkSumKey)
             AdiscopeInterface.sharedInstance().load(unitId)
         }
         target.showInterstitialAdHandler = {
