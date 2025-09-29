@@ -1,4 +1,3 @@
-
 import 'dart:collection';
 
 import 'package:flutter/services.dart';
@@ -9,15 +8,19 @@ class TnkRwdNVad {
   Future<String?> getPlatformVersion() {
     return TnkRwdNVadPlatform.instance.getPlatformVersion();
   }
+
   Future<String?> setCategoryAndFilter(int category, int filter) {
     return TnkRwdNVadPlatform.instance.setCategoryAndFilter(category, filter);
   }
-  Future<String?> openEventWebView(int eventId) {
-    return TnkRwdNVadPlatform.instance.openEventWebView(eventId);
+
+  Future<String?> openEventWebView(int eventId, [String checkParam = ""]) {
+    return TnkRwdNVadPlatform.instance.openEventWebView(eventId, checkParam);
   }
+
   Future<String?> showCustomTapActivity(String url, String deep_link) {
     return TnkRwdNVadPlatform.instance.showCustomTapActivity(url, deep_link);
   }
+
   Future<String?> showAdList(String title, [int appId = 0]) {
     return TnkRwdNVadPlatform.instance.showAdList(title, appId);
   }
@@ -74,6 +77,7 @@ class TnkRwdNVad {
   Future<String?> onItemClick(String app_id) {
     return TnkRwdNVadPlatform.instance.onItemClick(app_id);
   }
+
   Future<String?> setUseTermsPopup(bool isUse) {
     return TnkRwdNVadPlatform.instance.setUseTermsPopup(isUse);
   }
@@ -81,12 +85,15 @@ class TnkRwdNVad {
   Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
     return TnkRwdNVadPlatform.instance.setCustomUnitIcon(map);
   }
+
   Future<String?> closeAllView() {
     return TnkRwdNVadPlatform.instance.closeAllView();
   }
+
   Future<String?> closeOfferwall() {
     return TnkRwdNVadPlatform.instance.closeOfferwall();
   }
+
   Future<String?> closeAdDetail() {
     return TnkRwdNVadPlatform.instance.closeAdDetail();
   }
