@@ -242,7 +242,8 @@ class TnkRwdNVadPlugin :  FlutterPlugin, MethodCallHandler, ActivityAware {
 
                 "openEventWebView" -> {
                     val eventId: Int = (call.argument("eventId") as? Int ?: 0)
-                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
+                    val checkParam: String = (call.argument("checkParam") as? String ?: "")
+                    TnkEventActivity.startActivity(mActivity, eventId.toLong(), checkParam)
                 }
 
                 "showCustomTapActivity" -> {
