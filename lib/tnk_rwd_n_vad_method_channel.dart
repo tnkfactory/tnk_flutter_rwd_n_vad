@@ -24,7 +24,7 @@ class MethodChannelTnkRwdNVad extends TnkRwdNVadPlatform {
   }
   @override
   Future<String?> openEventWebView(int eventId, [String checkParam = ""]) async {
-    final version = await methodChannel.invokeMethod<String>('openEventWebView', <String, dynamic>{"eventId" :eventId});
+    final version = await methodChannel.invokeMethod<String>('openEventWebView', <String, dynamic>{"eventId" :eventId, "checkParam":checkParam});
     return version;
   }
   @override

@@ -58,7 +58,7 @@ android {
     }
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 23
     }
 
     dependencies {
@@ -85,5 +85,5 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.7.1"
     implementation "androidx.fragment:fragment-ktx:1.4.1"
 //    implementation "com.tnkfactory:rwd:8.08.40"
-    api("com.tnkfactory.ad:tnk_rwd_fancast:1.01.10")
+    api("com.tnkfactory.ad:tnk_rwd_fancast:1.01.11")
 }

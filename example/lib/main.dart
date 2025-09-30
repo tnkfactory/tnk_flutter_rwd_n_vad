@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
     // _tnkRwdNVadPlugin.showATTPopup();
     _tnkRwdNVadPlugin.setCOPPA(false);
     _tnkRwdNVadPlugin.setUserName("tnk_test");
+    _tnkRwdNVadPlugin.openEventWebView(1234,"asdf");
     // String platformVersion;
     //
     // try {

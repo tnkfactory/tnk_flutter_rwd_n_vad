@@ -1,6 +1,6 @@
 name: tnk_rwd_n_vad
 description: "tnk rwd and adiscope video ad sdk flutter plugin"
-version: 0.0.2
+version: 0.0.4
 homepage: https://github.com/tnkfactory/tnk_flutter_rwd_n_vad
 repository: https://github.com/tnkfactory/tnk_flutter_rwd_n_vad
 environment:

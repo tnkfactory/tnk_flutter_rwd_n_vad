@@ -74,7 +74,7 @@ class MockTnkRwdNVadPlatform
   }
 
   @override
-  Future<String?> openEventWebView(int eventId) {
+  Future<String?> openEventWebView(int eventId, [String checkParam = ""]) {
     // TODO: implement openEventWebView
     throw UnimplementedError();
   }
