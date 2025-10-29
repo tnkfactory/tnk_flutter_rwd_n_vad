@@ -28,7 +28,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     _type = widget.type;
     // getAdList();
   }
